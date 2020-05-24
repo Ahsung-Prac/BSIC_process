@@ -9,6 +9,11 @@ int main(void){
 	pid_t pid = 15;
 	int l=3;
 
+	// redirection으로 파일로 printf를 하게되면
+	// fully bufferd io를 하게 되면서, flush를 마지막으로 미루다보니까
+	// printf의 buffer까지 child에 복사되서 fork()이전의 printf가 두번출력된다. 
+	// 일반 write로 stdout을 하면 buffered가 안되므로 1번만 출력된다.
+
 	printf("PID(%d): Parent g=%d,l=%d \n",getpid(),g,l);
 	pid = fork(); //child start on this line
 	printf("PID(%d): current g= %d,l=%d\n",getpid(),g,l);

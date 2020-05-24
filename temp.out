@@ -1,0 +1,11 @@
+PID(20367) : Parent g =2 l=3
+PID(20367): current g= 2,l=3
+PID(20367): WAIT fork-pid=20368 
+
+PID(20367): g=2 l=3 return
+
+PID(20367) : Parent g =2 l=3
+PID(20368): current g= 2,l=3
+PID(20368) this prc child so fork-pid==0
+PID(20368): g=3 l=4 return
+
