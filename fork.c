@@ -13,7 +13,9 @@ int main(void){
 	// fully bufferd io를 하게 되면서, flush를 마지막으로 미루다보니까
 	// printf의 buffer까지 child에 복사되서 fork()이전의 printf가 두번출력된다. 
 	// 일반 write로 stdout을 하면 buffered가 안되므로 1번만 출력된다.
-
+	// stderr는 버퍼링 하지 않고 내보내기 때문에 redirection이여도 이미 flush해서
+	// child에게 복사되 지 않았다.
+	fprintf(stderr," run on parent, stderr! redirection test\n");
 	printf("PID(%d): Parent g=%d,l=%d \n",getpid(),g,l);
 	pid = fork(); //child start on this line
 	printf("PID(%d): current g= %d,l=%d\n",getpid(),g,l);
